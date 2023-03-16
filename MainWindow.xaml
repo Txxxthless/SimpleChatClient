@@ -4,8 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatClient" xmlns:view="clr-namespace:ChatClient.MVVM.View"
+        xmlns:viewmodels="clr-namespace:ChatClient.MVVM.ViewModel"
+        xmlns:views="clr-namespace:ChatClient.MVVM.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         >
-    <view:ChatView/>
+    <ContentControl Content="{Binding CurrentViewModel}">
+        <ContentControl.Resources>
+            <DataTemplate DataType="{x:Type viewmodels:MainViewModel}">
+                <views:ChatView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:NicknameViewModel}">
+                <views:NicknameView/>
+            </DataTemplate>
+        </ContentControl.Resources>
+    </ContentControl>
 </Window>

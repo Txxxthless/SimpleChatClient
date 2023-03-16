@@ -1,18 +1,17 @@
-﻿using ChatClient.MVVM.View;
+﻿using ChatClient.Core;
 using ChatClient.MVVM.ViewModel;
-using System;
-using System.Collections.Generic;
 using System.Windows;
 
 namespace ChatClient
 {
     public partial class MainWindow : Window
     {
-        private MainViewModel viewModel;
+        private ObservableObject _currentViewModel;
+        public ObservableObject CurrentViewModel => _currentViewModel;
         public MainWindow()
         {
-            viewModel = new MainViewModel();
-            this.DataContext = viewModel;
+            _currentViewModel = new DisplayViewModel();
+            this.DataContext = CurrentViewModel;
             InitializeComponent();
         }
     }

@@ -8,7 +8,7 @@ using System.Windows.Threading;
 
 namespace ChatClient.MVVM.ViewModel
 {
-    internal class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
         private StreamReader? _reader;
         private StreamWriter? _writer;
@@ -16,8 +16,10 @@ namespace ChatClient.MVVM.ViewModel
         private ObservableCollection<string> _messages = new ObservableCollection<string>();
         private string _message;
         private SendMessageCommand _sendMessageCommand;
+        private string _nickname;
 
 
+        public string Nickname => _nickname;
         public SendMessageCommand MessageCommand => _sendMessageCommand;
         public string Message
         {
@@ -33,8 +35,10 @@ namespace ChatClient.MVVM.ViewModel
         public ObservableCollection<string> Messages => _messages;
 
 
-        public MainViewModel()
+        public MainViewModel(string nickname)
         {
+            _nickname = nickname;
+
             _sendMessageCommand = new SendMessageCommand(this);
 
             _tcpClient = new TcpClient();
@@ -55,9 +59,10 @@ namespace ChatClient.MVVM.ViewModel
 
         public void SendMessage()
         {
-            Writer.WriteLine(Message);
+            string messageToAdd = string.Format("{0} : {1}", Nickname, Message);
+            Writer.WriteLine(messageToAdd);
             Writer.Flush();
-            Messages.Add(Message);
+            Messages.Add(messageToAdd);
         }
 
         public async Task ReceiveMessage()

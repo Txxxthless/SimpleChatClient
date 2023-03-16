@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace ChatClient.Core
 {
-    internal abstract class CommandBase : ICommand
+    public abstract class CommandBase : ICommand
     {
         public event EventHandler? CanExecuteChanged;
 

@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace ChatClient.Core
 {
-    internal class SendMessageCommand : CommandBase
+    public class SendMessageCommand : CommandBase
     {
         private MainViewModel _viewModel;
 
