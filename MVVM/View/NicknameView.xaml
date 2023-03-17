@@ -6,27 +6,35 @@
              xmlns:local="clr-namespace:ChatClient.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="100">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    <Border Background="#1f1f1f">
+        <Grid Margin="100">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <Label Grid.Row="0"
+            <Label Grid.Row="0"
                Content="Choose your nickname!"
+               Foreground="White"
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center"
-               FontSize="18"/>
-        <TextBox Grid.Row="1"
+               FontSize="24"/>
+            <TextBox Grid.Row="1"
                  Margin="10"
                  FontSize="18"
-                 Text="{Binding Nickname}"/>
-        <Button Grid.Row="2"
+                 Text="{Binding Nickname}"
+                 TextAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Style="{StaticResource RoundedTextBox}"/>
+            <Button Grid.Row="2"
                 Content="Go!"
                 Margin="10,0,10,10"
                 FontSize="18"
-                Command="{Binding Command}"/>
+                Foreground="White"
+                Command="{Binding Command}"
+                Style="{StaticResource RoundedButton}"/>
 
-    </Grid>
+        </Grid>
+    </Border>
 </UserControl>
